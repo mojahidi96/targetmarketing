@@ -1,0 +1,80 @@
+{
+  "userList": [
+    {
+      "_id": 1,
+      "firstName": "Mike",
+      "lastName": "Freeman",
+      "email": "xyz@xyz.com",
+      "roles": [
+        "administrator",
+        "authenticated"
+      ]
+    },
+    {
+      "_id": 2,
+      "firstName": "Mike",
+      "lastName": "Freeman",
+      "email": "xyz@xyz.com",
+      "roles": [
+        "CHAMBER",
+        "authenticated"
+      ],
+      "account_name": "target_marketing",
+      "primary_contact_person": "Agent X",
+      "account_contact_number": "0070070070",
+      "primary_contact_number": 1010101010,
+      "industry": "IT",
+      "primary_contact_person_designation": "Operations Head",
+      "logo": "string"
+    },
+    {
+      "_id": 3,
+      "firstName": "Mike",
+      "lastName": "Freeman",
+      "email": "xyz@xyz.com",
+      "chamberId": "target_marketing",
+      "roles": [
+        "SalesRep",
+        "authenticated"
+      ]
+    }
+  ],
+  "directoryList": [
+    {
+      "_id": 1,
+      "firstName": "Mike",
+      "lastName": "Freeman",
+      "account_name": "tm",
+      "primary_contact_person": "xyzpcp",
+      "account_contact_number": "0010010011",
+      "primary_contact_number": "1111111111",
+      "expected_revenue": "2M",
+      "industry": "IT",
+      "primary_contact_person_designation": "Owner",
+      "last_touched": "24/07/2018",
+      "onboard_date": "24/06/2018",
+      "isMember": "Y",
+      "roles": [
+        "Prospect"
+      ]
+    },
+    {
+      "_id": 2,
+      "firstName": "Mike",
+      "lastName": "Freeman",
+      "account_name": "tm",
+      "primary_contact_person": "xyzpcp",
+      "account_contact_number": "0010010011",
+      "primary_contact_number": "1111111111",
+      "expected_revenue": "2M",
+      "industry": "IT",
+      "primary_contact_person_designation": "Owner",
+      "last_touched": "24/07/2018",
+      "onboard_date": "24/06/2018",
+      "isMember": "N",
+      "roles": [
+        "Prospect"
+      ]
+    }
+  ]
+}

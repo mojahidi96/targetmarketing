@@ -1,0 +1,106 @@
+.main {
+    background:url('../../../assets/bg.png') no-repeat center top;
+    background-size: 100%;
+    padding: 15px;
+}
+::-webkit-scrollbar {
+    width: 1px;
+}
+
+.card{
+    .card-header{
+       padding:0px;
+    }
+}
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #f2f2f2; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #f2f2f2; 
+}
+.subheader {
+    padding: 0.1rem 1rem;
+}
+.btn {
+    margin: 0.1rem auto;
+    display: table;
+    font-size:0.8rem !important;
+    border-radius: 18px;
+    padding: 0.2rem 3rem;
+}
+/* Create two unequal columns that floats next to each other */
+
+
+.row{
+    background:rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    height:57rem;
+}
+.simple-page-scroller {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-y: auto;
+    max-height: 30vh;
+}
+
+.nopadding {
+    padding: 0px !important;
+}
+nav{
+    background-color:white;
+  
+  }
+  .logo{
+        width: 148px;
+      padding: 10px;
+  }
+  
+  .navbar{
+     border-bottom: 1px solid #eee;
+  }
+  .profileName{
+    display:flex;
+    i{
+      font-size: 16px;
+      padding-right:10px;
+    }
+  }
+
+.draggable-item{
+    padding: 10px 0px;
+    font-size:0.8rem;
+}
+
+.orange-bg{
+    background: #f78c1e !important;
+    color:white !important;
+}
+
+.white-color{
+    color:white !important;
+}
+.red{
+    background-color:#EF4559;
+    color:white;
+}
+
+.modal-header{
+    padding:0.6rem 1rem;
+    border:0px;
+}
+.modal-body{
+    padding:0rem 1rem 2rem 1rem; 
+    margin-top:-2rem;
+}
+.sidebar{
+    padding:0.1rem 0rem;
+}

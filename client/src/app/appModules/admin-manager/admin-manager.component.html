@@ -1,0 +1,10 @@
+<app-navbar [username]="username"></app-navbar>
+<div>
+    <div class="row">
+        <div class="col-12">
+            <app-admin-submenu (selectedItem)="updateSelection($event)" [openModal]="isOpenModal"></app-admin-submenu>
+          </div>
+      <div class="col-12" [ngSwitch]="selectedMenu">
+          <app-user-page *ngSwitchCase="menuItems.users" (openModalEvent)="openModal($event)"></app-user-page>
+      </div>
+</div>

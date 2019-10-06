@@ -1,0 +1,53 @@
+<div class="row fadeIn animated justify-content-between">
+  <div class="input-field col-2">
+    <select class="form-control">
+      <option value="" disabled selected>Industry</option>
+      <option *ngFor="let industry of industries" value="industry.name">{{industry.name}}</option>
+    </select>
+  </div>
+  <div class="row  col-3 justify-content-end">
+    <div class="input-field col-6 m2">
+      <select class="form-control">
+        <option value="" disabled selected>Product</option>
+        <option *ngFor="let product of products" value="product.name">{{product.name}}</option>
+      </select>
+    </div>
+    <div class="input-field col-6 offset-s5">
+      <select class="form-control">
+        <option value="" disabled selected>Industry(A-Z)</option>
+        <option *ngFor="let indSort of industrySortTypes" value="indSort.name">{{indSort.name}}</option>
+      </select>
+    </div>
+  </div>
+</div>
+<h4 class="orange-text">Business Directory</h4>
+<div class="content-list row">
+  <div class="col-md-4" draggable="true" *ngFor="let prospect of prospects">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title txtal-lft card-head">{{prospect.accountname}}
+          <br/>
+          <h6>{{prospect.producttype}}</h6>
+        </span>
+        <div class="row">
+          <div class="col-md-6">
+            <p>
+              <i class="material-icons">multiline_chart</i>Chance to close {{prospect.chance_to_close}}</p>
+          </div>
+          <div class="col-md-6">
+            <p>
+              <i class="material-icons">date_range</i>Last touched {{prospect.last_touched}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 contact-details">
+            {{prospect.primary_contact_person}} - {{prospect.primary_contact_person_designation}} - {{prospect.primary_contact_number}}-
+          </div>
+        </div>
+      </div>
+      <div class="card-action card-footer txtal-rt">
+        <a (click)="emitProspect(prospect)">View</a>
+      </div>
+    </div>
+  </div>
+</div>

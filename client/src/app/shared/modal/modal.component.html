@@ -1,0 +1,8 @@
+<div id="modal1" *ngIf="openModal" [class]="(openModal === true)? 'modal open fadeIn animated': 'model'">
+  <div class="modal-content">
+    <h5> {{header}} </h5>
+    <ng-content select="[card-body]"></ng-content>
+    <div *ngIf="isFooter" class="modal-footer">
+      <ng-content select="[card-footer]"></ng-content>
+    </div>
+  </div>

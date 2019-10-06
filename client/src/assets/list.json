@@ -1,0 +1,52 @@
+{
+  "users": [
+    {
+      "uid": "1",
+      "name": "Good Guys Moving",
+      "lasttouched": "7/27/2018",
+      "stage": "prospecting"
+    },
+    {
+      "uid": "2",
+      "name": "elaborate interiors",
+      "lasttouched": "6/28/2018",
+      "stage": "Need Analysis"
+    },
+    {
+      "uid": "3",
+      "name": "Newsome Station Trainyard",
+      "lasttouched": "5/23/2018",
+      "stage": "Solution"
+    },
+    {
+      "uid": "4",
+      "name": "LeftCoast Records",
+      "lasttouched": "2/25/2018",
+      "stage": "Closing"
+    },
+    {
+      "uid": "5",
+      "name": "LodgePodge Builders",
+      "lasttouched": "3/16/2018",
+      "stage": "Closing"
+    },
+    {
+      "uid": "6",
+      "name": "fill in the blank",
+      "lasttouched": "3/17/2018",
+      "stage": "Solution"
+    },
+    {
+      "uid": "7",
+      "name": "Towed you so towing",
+      "lasttouched": "7/26/2018",
+      "stage": "Need Analysis"
+    },
+    {
+      "uid": "8",
+      "name": "Towed you",
+      "lasttouched": "7/6/2018",
+      "stage": "prospecting"
+    }
+  ]
+}

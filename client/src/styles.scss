@@ -1,0 +1,40 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~ngx-toastr/toastr.css';
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900');
+@import url('./assets/animate.css');
+@import url('./assets/pace.css');
+body {
+   background-image: url('./assets/bg.png');
+   background-position: center;
+   background-size: cover;
+   background-repeat: no-repeat;
+   min-height: 97vh;
+   overflow: hidden;
+   font-family: 'Roboto', sans-serif;
+}
+
+
+.toast{
+width:auto !important;
+}
+.toast-title{
+  padding-right:10px;
+}
+
+#toast-container{
+  top:0px;
+  right: 0% !important;
+}
+
+.btn {
+  height:auto;
+}
+
+
+.orange-text{
+  color:#f78c1e;
+}
+
+h1,h2,h3,h4,h5,h6{
+  font-weight:400;
+}

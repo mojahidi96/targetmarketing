@@ -1,0 +1,99 @@
+<div class="container">
+  <h2 *ngIf="isTitle">{{isUpdate?'Update':'Create'}} Chamber Profile</h2>
+  <form class="form row scroll" (ngSubmit)="onSubmit()" [formGroup]="chamberUserForm" novalidate>
+    <div class="form-group col-md-6">
+      <label for="aaa">First Name *:</label>
+      <div class="relative">
+        <input formControlName="first_name" [ngClass]="displayFieldCss('first_name')" class="form-control" id="first_name" type="text"
+          pattern="[a-zA-Z\s]+" required="" autofocus="" title="Type your first name." autocomplete="" placeholder="Type your first name...">
+        <i class="material-icons">person</i>
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="last_name">Last Name *:</label>
+      <div class="relative">
+        <input formControlName="last_name" [ngClass]="displayFieldCss('last_name')" class="form-control" id="last_name" type="text"
+          pattern="[a-zA-Z\s]+" required="" autofocus="" title="Type your last name." autocomplete="" placeholder="Type your last name...">
+        <i class="material-icons">person</i>
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="email">Email address *:</label>
+      <div class="relative">
+        <input formControlName="email" email [ngClass]="displayFieldCss('email')" class="form-control" type="email" required="" placeholder="Type your email address..."
+          title="Type your email address." pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+        <i class="material-icons">email</i>
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="primary_contact_person">Primary Contact Person:</label>
+      <div class="relative">
+        <input formControlName="primary_contact_person" class="form-control" type="text" placeholder="Mention your contact person..."
+          title="Mention your contact person.">
+        <i class="material-icons">domain</i>
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="primary_contact_number">Primary Contact Number:</label>
+      <div class="relative">
+        <input formControlName="primary_contact_number" class="form-control" type="text" maxlength="10" oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+          placeholder="Type your Mobile Number..." title="Type your Mobile Number.">
+        <i class="material-icons">phone</i>
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="primary_contact_person_designation">Primary Contact Designation:</label>
+      <div class="relative">
+        <input formControlName="primary_contact_person_designation" class="form-control" type="text" id="designation" placeholder="Type your designation..."
+          title="Type your designation.">
+        <i class="material-icons">business_center</i>
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="account_name">Account Name *:</label>
+      <div class="relative">
+        <input formControlName="account_name" [ngClass]="displayFieldCss('account_name')" class="form-control" type="text" placeholder="Type your account name..."
+          title="Type your account name." required="">
+        <i class="material-icons">domain</i>
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="account_contact_number">Account Contact Number *:</label>
+      <div class="relative">
+        <input formControlName="account_contact_number" maxlength="10" [ngClass]="displayFieldCss('account_contact_number')" class="form-control"
+          type="text" oninput="this.value=this.value.replace(/[^0-9]/g,'');" placeholder="Type your account contact number..."
+          title="Type your account contact number." required="">
+        <i class="material-icons">domain</i>
+      </div>
+    </div>
+
+    <div class="form-group col-md-6">
+      <label for="industry">Industry *:</label>
+      <div class="relative">
+        <input formControlName="industry" [ngClass]="displayFieldCss('industry')" class="form-control" type="text" id="industry"
+          placeholder="Type your specialization..." title="Type your specialization." required="">
+        <i class="material-icons">group_work</i>
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="logo">Logo:</label>
+      <div class="relative">
+        <input formControlName="logo" class="form-control" type="text" id="logo" placeholder="Url for the logo..." title="Url for the logo.">
+        <i class="material-icons">group_work</i>
+      </div>
+    </div>
+    <div class="tright col-md-12" *ngIf="!modalMode">
+      <a>
+        <button class="movebtn movebtnre" type="Reset" *ngIf="!isUpdate">
+          <i class="fa fa-fw fa-refresh"></i> Reset </button>
+        <button class="movebtn movebtnre" type="button" *ngIf="isUpdate" (click)="closeChamberForm()"> Close </button>
+
+      </a>
+      <a>
+        <button class="movebtn movebtnsu" type="Submit">{{isUpdate?'Update':'Create'}} User
+          <i class="fa fa-fw fa-paper-plane"></i>
+        </button>
+      </a>
+    </div>
+  </form>
+</div>

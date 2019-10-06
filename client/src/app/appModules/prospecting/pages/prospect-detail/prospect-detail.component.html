@@ -1,0 +1,163 @@
+<div class="row fadeIn animated">
+  <div class="col-9">
+    <h4 class="subheader orange-text text-darken-2">
+      <button class="btn btn-link text-danger">
+        <i class="fas fa-chevron-left"></i>
+      </button>Newsom Station Trainyard
+    </h4>
+    <div class="drop-shadow raised">
+      <p class="text">
+        Notes
+        <textarea name="text" class="validate[required,length[6,300]] feedback-input" id="comment"></textarea>
+
+      </p>
+      <div class="note-footer">
+
+        <div class="row">
+          <div class="col-7 icon-list">
+            <i class="material-icons">local_phone</i>
+            <i class="material-icons">note</i>
+            <i class="material-icons">pan_tool</i>
+          </div>
+          <div class="col-3 calendar">
+            <div class="form-group">
+              <div class="input-group">
+                <!-- <span class=" ">14th Aug 2018</span>
+                            <i class=" right-align col-4 left-align material-icons">date_range</i> -->
+                <input class="form-control " placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+                <div class="input-group-append ">
+                  <button class="btn btn-link" (click)="d.toggle()" type="button">
+                    <i class="far fa-calendar-plus"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-2 postbtn">
+            <button class="btn">Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="chat">
+      <h5 class="subheader text-darken-2">Conversation Timeline</h5>
+      <ul class="contact-list">
+        <li>
+          <i class="material-icons">note</i>
+          <div class="contact-info">
+            <h6 class="heading--name">6/7/18 - 3.14PM</h6>
+            <div class="contact-item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis laborum dicta minima inventore, sint architecto
+              repellat amet at odit, corrupti dolorum officia, exercitationem obcaecati veritatis. Optio ad dolorum tempore
+              ab?
+            </div>
+
+          </div>
+        </li>
+        <li>
+          <i class="material-icons">pan_tool</i>
+          <div class="contact-info">
+            <h6 class="heading--name">6/7/18 - 3.14PM</h6>
+            <div class="contact-item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis laborum dicta minima inventore, sint architecto
+              repellat amet at odit, corrupti dolorum officia, exercitationem obcaecati veritatis. Optio ad dolorum tempore
+              ab?
+            </div>
+
+          </div>
+        </li>
+        <li>
+          <i class="material-icons">local_phone</i>
+          <div class="contact-info">
+            <h6 class="heading--name">6/7/18 - 3.14PM</h6>
+            <div class="contact-item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis laborum dicta minima inventore, sint architecto
+              repellat amet at odit, corrupti dolorum officia, exercitationem obcaecati veritatis. Optio ad dolorum tempore
+              ab?
+            </div>
+
+          </div>
+        </li>
+        <li>
+          <i class="material-icons">local_phone</i>
+          <div class="contact-info">
+            <h6 class="heading--name">6/7/18 - 3.14PM</h6>
+            <div class="contact-item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis laborum dicta minima inventore, sint architecto
+              repellat amet at odit, corrupti dolorum officia, exercitationem obcaecati veritatis. Optio ad dolorum tempore
+              ab?
+            </div>
+
+          </div>
+        </li>
+        <li>
+          <i class="material-icons">local_phone</i>
+          <div class="contact-info">
+            <h6 class="heading--name">6/7/18 - 3.14PM</h6>
+            <div class="contact-item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis laborum dicta minima inventore, sint architecto
+              repellat amet at odit, corrupti dolorum officia, exercitationem obcaecati veritatis. Optio ad dolorum tempore
+              ab?
+            </div>
+
+          </div>
+        </li>
+        <li>
+          <i class="material-icons">local_phone</i>
+          <div class="contact-info">
+            <h6 class="heading--name">6/7/18 - 3.14PM</h6>
+            <div class="contact-item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis laborum dicta minima inventore, sint architecto
+              repellat amet at odit, corrupti dolorum officia, exercitationem obcaecati veritatis. Optio ad dolorum tempore
+              ab?
+            </div>
+
+          </div>
+        </li>
+        <li>
+          <i class="material-icons">local_phone</i>
+          <div class="contact-info">
+            <h6 class="heading--name">6/7/18 - 3.14PM</h6>
+            <div class="contact-item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis laborum dicta minima inventore, sint architecto
+              repellat amet at odit, corrupti dolorum officia, exercitationem obcaecati veritatis. Optio ad dolorum tempore
+              ab?
+            </div>
+
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-3 prospectdetails">
+    <div class="row">
+      <form class="col-12">
+        <div class="form-group">
+          <label for="emailaddress">Email address</label>
+          <input type="email" class="form-control" id="emailaddress" aria-describedby="emailHelp" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+          <label for="accountname">Account Name</label>
+          <input type="text" class="form-control" id="accountname" aria-describedby="emailHelp" placeholder="Account name">
+        </div>
+        <div class="form-group">
+          <label for="contactNumber">Contact Number</label>
+          <input type="number" class="form-control" id="contactNumber" aria-describedby="emailHelp" placeholder="Contact number">
+        </div>
+        <div class="form-group">
+          <label for="website">Website</label>
+          <input type="url" class="form-control" id="website" aria-describedby="emailHelp" placeholder="Website">
+        </div>
+        <div class="form-group">
+          <label for="pcontactName">Primary Contact Name</label>
+          <input type="text" class="form-control" id="pcontactName" aria-describedby="emailHelp" placeholder="Primary Contact Name">
+        </div>
+        <div class="form-group">
+          <label for="expectedRevenue">Expected Revenue</label>
+          <input type="text" class="form-control" id="expectedRevenue" aria-describedby="emailHelp" placeholder="Expected Revenue">
+        </div>
+        <div class="form-group">
+          <label for="industry">Industry</label>
+          <input type="text" class="form-control" id="industry" aria-describedby="emailHelp" placeholder="Industry">
+        </div>
+        <div class="input-field col-12 center-align">
+          <button class="snooze-btn waves-effect waves-light btn">Snooze Prospect</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

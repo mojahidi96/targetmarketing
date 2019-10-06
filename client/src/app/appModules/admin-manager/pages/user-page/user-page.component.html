@@ -1,0 +1,75 @@
+<div class="row user-page">
+  <div class="col-2">
+    <app-search (searchInput)="getSearchText($event)"></app-search>
+
+    <div class="list-group userList">
+      <a *ngFor="let user of users|filter:searchText" class="list-group-item list-group-item-action flex-column align-items-start">
+        <div class="btn-group btn-group-sm" role="group">
+          <input class="radiobutton" name="user" type="radio" [checked]="user.uid === selectedId" (change)="setSelectedUser(user)"
+          />
+          <label class="grey-text text-darken-2 text-truncate">{{user.name}}</label>
+          <small class="text-muted role">{{user.role}}</small>
+          <small class="text-muted deletebutton">
+            <i class="material-icons grey-text text-darken-2 right" (click)="deleteUser(user.uid)">delete_forever</i>
+          </small>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="col-10">
+    <div>
+      <button type="button" class="btn btn-link" data-toggle="modal" data-target="#modal">
+        Create User
+      </button>
+      <hr/>
+    </div>
+    <div [ngSwitch]="selectedUserType">
+      <app-admin-user-form *ngSwitchCase="alluserTypes.administrator" [selectedUser]="selectedUser" [isUpdate]="isUpdate" [modalMode]="modalMode"
+        (submitAdmin)="formSubmit($event)" (closeForm)="closeForm()"></app-admin-user-form>
+      <app-chamber-user-form *ngSwitchCase="alluserTypes.chamber" [selectedUser]="selectedUser" [isUpdate]="isUpdate" [modalMode]="modalMode"
+        (submitChamber)="formSubmit($event)" (closeForm)="closeForm()"></app-chamber-user-form>
+      <app-sales-rep-user-form *ngSwitchCase="alluserTypes.salesRep" [selectedUser]="selectedUser" [isUpdate]="isUpdate" [modalMode]="modalMode"
+        (submitSalesRep)="formSubmit($event)" (closeForm)="closeForm()"></app-sales-rep-user-form>
+      <app-prospect-user-form *ngSwitchCase="alluserTypes.prospect" [selectedUser]="selectedUser" [isUpdate]="isUpdate" [modalMode]="modalMode"
+        (submitProspect)="formSubmit($event)" (closeForm)="closeForm()"></app-prospect-user-form>
+      <app-update-password *ngSwitchCase="'updatePassword'" (submitUpdatePwd)="formSubmit($event)"></app-update-password>
+    </div>
+
+    <div class="container" *ngIf="!selectedUserType">
+      <div class="boo-wrapper">
+        <div class="boo">
+          <i class="material-icons">add_to_queue</i>
+        </div>
+        <div class="shadow"></div>
+
+        <h6>Here you can Search for Chambers. Alternatively</h6>
+        <p>
+          <a (click)="getUser()" class="waves-effect waves-orange btn-large">Get List</a>
+        </p>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static">
+  <div class="modal-dialog bd-example-modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">{{header}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" #closeBtn (click)="closeModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <select class="form-control" [(ngModel)]="userType" (change)="setUserType(userType)">
+          <option value="" disabled selected>User Type</option>
+          <option [value]="alluserTypes.administrator">Administrator</option>
+          <option [value]="alluserTypes.chamber">Chamber</option>
+          <option [value]="alluserTypes.prospect">Prospect</option>
+          <option [value]="alluserTypes.salesRep">Sales Rep</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>

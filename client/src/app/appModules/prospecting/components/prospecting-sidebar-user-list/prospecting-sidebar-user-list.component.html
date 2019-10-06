@@ -1,0 +1,107 @@
+<div id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="card">
+    <div class="card-header orange-bg" role="tab" id="headingOne">
+      <h5 class="mb-0">
+        <button data-toggle="collapse" class="btn btn-link collapsed white-color" data-parent="#accordion" href="#collapseOne" aria-expanded="true"
+          aria-controls="collapseOne">
+          Prospecting
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+      <div class="card-block">
+        <div class="simple-page-scroller">
+          <smooth-dnd-container [groupName]="'1'" [getChildPayload]="getChildPayload1" (drop)="onDrop('prospecting', $event)">
+            <smooth-dnd-draggable *ngFor="let item of prospecting">
+              <div class="draggable-item">
+                <div class="row justify-content-between">
+                  <span class="col-8 text-truncate" [title]="item.name">{{item.name}}</span>
+                  <span class="col-4 text-truncate">{{(item.lasttouched | amDifference: today :'days' : true)*-1}} days</span>
+                </div>
+              </div>
+            </smooth-dnd-draggable>
+          </smooth-dnd-container>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header orange-bg" role="tab" id="headingTwo">
+      <h5 class="mb-0">
+        <button class="collapsed" class="btn btn-link collapsed white-color" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"
+          aria-expanded="false" aria-controls="collapseTwo">
+          Need Analysis
+        </button>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="card-block">
+        <div class="simple-page-scroller">
+          <smooth-dnd-container [groupName]="'1'" [getChildPayload]="getChildPayload2" (drop)="onDrop('need_analysis', $event)">
+            <smooth-dnd-draggable *ngFor="let item of need_analysis">
+              <div class="draggable-item">
+                <div class="row justify-content-between">
+                  <span class="col-8 text-truncate" [title]="item.name">{{item.name}}</span>
+                  <span class="col-4 text-truncate">{{(item.lasttouched | amDifference: today :'days' : true)*-1}} days</span>
+                </div>
+              </div>
+            </smooth-dnd-draggable>
+          </smooth-dnd-container>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header orange-bg" role="tab" id="headingThree">
+      <h5 class="mb-0">
+        <button class="collapsed" class="btn btn-link collapsed white-color" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"
+          aria-expanded="false" aria-controls="collapseThree">
+          Solution
+        </button>
+      </h5>
+    </div>
+    <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+      <div class="card-block">
+        <div class="simple-page-scroller">
+          <smooth-dnd-container [groupName]="'1'" [getChildPayload]="getChildPayload3" (drop)="onDrop('solution', $event)">
+            <smooth-dnd-draggable *ngFor="let item of solution">
+              <div class="draggable-item">
+                <div class="row justify-content-between">
+                  <span class="col-8 text-truncate" [title]="item.name">{{item.name}}</span>
+                  <span class="col-4 text-truncate">{{(item.lasttouched | amDifference: today :'days' : true)*-1}} days</span>
+                </div>
+              </div>
+            </smooth-dnd-draggable>
+          </smooth-dnd-container>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header orange-bg" role="tab" id="headingfour">
+      <h5 class="mb-0">
+        <button class="collapsed" class="btn btn-link collapsed white-color" data-toggle="collapse" data-parent="#accordion" href="#collapsefour"
+          aria-expanded="false" aria-controls="collapsefour">
+          Closing
+        </button>
+      </h5>
+    </div>
+    <div id="collapsefour" class="collapse" role="tabpanel" aria-labelledby="headingfour">
+      <div class="card-block">
+        <div class="simple-page-scroller">
+          <smooth-dnd-container [groupName]="'1'" [getChildPayload]="getChildPayload4" (drop)="onDrop('closing', $event)">
+            <smooth-dnd-draggable *ngFor="let item of closing">
+              <div class="draggable-item">
+                <div class="row justify-content-between">
+                  <span class="col-8 text-truncate" [title]="item.name">{{item.name}}</span>
+                  <span class="col-4 text-truncate">{{(item.lasttouched | amDifference: today :'days' : true)*-1}} days</span>
+                </div>
+              </div>
+            </smooth-dnd-draggable>
+          </smooth-dnd-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<app-navbar [username]="'Mike'"></app-navbar>
+<div class="main">
+  <div class="row">
+    <div class="col-md-2 h-100 sidebar d-inline-block">
+      <button class="red btn" data-toggle="modal" data-target="#addprospect" name="action">Add Prospect</button>
+      <app-prospecting-sidebar-user-list></app-prospecting-sidebar-user-list>
+    </div>
+    <div class="col-md-10 h-100 d-inline-block">
+      <app-prospect-detail *ngIf="selectedProspect"></app-prospect-detail>
+      <app-prospect-list (prospect)="SelectProspectevent($event)" *ngIf="!selectedProspect"></app-prospect-list>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade bd-example-modal-lg" id="addprospect" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" #closeBtn (click)="closeModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-prospect-user-form [isUpdate]="isUpdate" [modalMode]="modalMode" (submitProspect)="formSubmit($event)" (closeForm)="closeForm()"></app-prospect-user-form>
+      </div>
+    </div>
+  </div>
+</div>

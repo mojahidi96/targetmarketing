@@ -1,0 +1,102 @@
+<div class="container">
+  <h2 *ngIf="isTitle">{{isUpdate?'Update':'Create'}} Prospect Profile</h2>
+  <form class="form row scroll" (ngSubmit)="onSubmit()" [formGroup]="prospectUserForm" novalidate>
+    <div class="form-group col-md-6">
+      <label for="firstName">First Name *:</label>
+      <div class="relative">
+        <input formControlName="first_name" [ngClass]="displayFieldCss('first_name')" required="" class="form-control" id="firstName"
+          type="text" pattern="[a-zA-Z\s]+" autofocus="" title="Type your first name here." autocomplete="" placeholder="Type your first name here...">
+        <i class="material-icons">person</i>
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="lastName">Last Name *:</label>
+      <div class="relative">
+        <input formControlName="last_name" [ngClass]="displayFieldCss('last_name')" class="form-control" id="lastName" type="text"
+          pattern="[a-zA-Z\s]+" required="" autofocus="" title="Type your last name here." autocomplete="" placeholder="Type your last name here...">
+        <i class="material-icons">person</i>
+      </div>
+    </div>
+
+    <div class="form-group col-md-6">
+      <label for="email">Primary Contact Person:</label>
+      <div class="relative">
+        <input formControlName="primary_contact_person" class="form-control" type="text" placeholder="Mention your contact person..."
+          title="Mention your contact person...">
+        <i class="material-icons">domain</i>
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="primaryContactNumber">Primary Contact Number:</label>
+      <div class="relative">
+        <input formControlName="primary_contact_number" class="form-control" type="text" maxlength="10" oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+          placeholder="Type your Mobile Number..." title="Type your Mobile Number." name="primaryContactNumber">
+        <i class="material-icons">phone</i>
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="primaryContactDesignation">Primary Contact Designation:</label>
+      <div class="relative">
+        <input formControlName="primary_contact_person_designation" class="form-control" type="text" id="designation" placeholder="Type your designation..."
+          title="Type your designation." name="primaryContactDesignation">
+        <i class="material-icons">business_center</i>
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="contactNumber">Account Name *:</label>
+      <div class="relative">
+        <input formControlName="account_name" [ngClass]="displayFieldCss('account_name')" required="" class="form-control" type="text"
+          placeholder="Mention your account name..." title="Mention your account name." name="accountName">
+        <i class="material-icons">domain</i>
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="contactNumber">Account Contact Number *:</label>
+      <div class="relative">
+        <input formControlName="account_contact_number" [ngClass]="displayFieldCss('account_contact_number')" required="" class="form-control"
+          type="text" placeholder="Mention your account contact number..." maxlength="10" oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+          title="Mention your account contact number..." name="contactNumber">
+        <i class="material-icons">domain</i>
+      </div>
+    </div>
+
+    <div class="form-group col-md-6">
+      <label for="industry">Industry *:</label>
+      <div class="relative">
+        <input formControlName="industry" [ngClass]="displayFieldCss('industry')" required="" class="form-control" type="text" id="tags"
+          placeholder="Type your specialization..." title="Type your specialization..." name="industry">
+        <i class="material-icons">group_work</i>
+      </div>
+    </div>
+
+    <div class="form-group col-md-6">
+      <label for="expectedRevenue">Expected Revenue *:</label>
+      <div class="relative">
+        <input formControlName="expected_revenue" [ngClass]="displayFieldCss('expected_revenue')" required="" class="form-control"
+          type="text" placeholder="Mention your expected revenue..." oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+          title="Mention your expected revenue." name="expectedRevenue">
+        <i class="material-icons">domain</i>
+      </div>
+    </div>
+
+    <div class="form-group col-md-6">
+      <div class="form-check">
+        <input formControlName="isMember" class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+        <span class="check-box">Are you a member?</span>
+      </div>
+    </div>
+    <div class="tright col-md-s12" *ngIf="!modalMode">
+      <a>
+        <button class="movebtn movebtnre" type="Reset" *ngIf="!isUpdate">
+          <i class="fa fa-fw fa-refresh"></i> Reset </button>
+        <button class="movebtn movebtnre" type="button" *ngIf="isUpdate" (click)="closeProspectForm()"> Close </button>
+
+      </a>
+      <a>
+        <button class="movebtn movebtnsu" type="Submit">{{isUpdate?'Update':'Create'}} User
+          <i class="fa fa-fw fa-paper-plane"></i>
+        </button>
+      </a>
+    </div>
+  </form>
+</div>

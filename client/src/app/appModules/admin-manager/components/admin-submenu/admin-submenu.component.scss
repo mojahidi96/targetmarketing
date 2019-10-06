@@ -1,0 +1,61 @@
+.orange-bg{
+  background-color:#F78C1E;
+}
+.open{
+   z-index: 1003;
+    display: block;
+    opacity: 1;
+    top: 4%;
+    width:25vw;
+    transform: scaleX(1) scaleY(1);
+}
+.openoverlay{
+ z-index: 1002; display: block; opacity: 0.5;
+}
+.modal-content{
+  padding:10px 24px;
+  label{
+    font-size:1rem;
+  }
+  app-chamber-user-form{
+    margin-top:2rem;
+  }
+}
+/*PURELY FUNCTIONNAL CSS START*/
+.dropdown, .link, .link-hover {
+  display: inline-block; /*keep from overflow*/
+}
+.dropdown-content {
+  display: none; /*don't show it on default*/
+  position: absolute; /*dropdown needs to be below the text*/
+}
+.dropdown:hover .dropdown-content {
+  display: inline-block; /*show the content*/
+} /*concerns all items inside the .dropdown div, when the .dropdown gets hovered*/
+.dropdown-content .link {
+  display: block; /*not inline because we want to skip lines*/
+} /*the links won't show up until the parent .dropdown-content gets shown*/
+/*PURELY FUNCTIONNAL CSS STOPS*/
+
+/*LET THE STYLING BEGIN !*/
+.link, .link-hover {
+  font-family: Arial;
+  font-size: 20px;
+  font-weight: 200;
+  text-decoration: none;
+  text-align: center;
+  color: #ffffff;
+  background: #4774d1;
+  outline: none;
+  padding: 15px;
+  min-width: 150px;
+  transition: background 0.5s;
+}
+.link:hover, .link-hover:hover {
+  background: #3365cc;
+}
+.link:active, .link-hover:active {
+  background: #ff9900;
+  font-weight: bold;
+}
+/*LET THE STYLING END :(*/

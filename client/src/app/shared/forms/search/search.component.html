@@ -1,0 +1,8 @@
+<div class="nav-wrapper">
+  <form>
+    <div class="input-group input-group-sm mb-3">
+      <input id="search" name="search" [(ngModel)]="searchText" type="search" class="form-control" (keydown)="onSearchChange($event.target.value)"
+        aria-label="Sizing example input" placeholder="search user" aria-describedby="searchbox">
+    </div>
+  </form>
+</div>

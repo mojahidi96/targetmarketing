@@ -1,0 +1,30 @@
+<form (ngSubmit)="submit()" [formGroup]="signInForm" novalidate>
+  <div class="materialContainer">
+    <div class="box">
+      <div class="title">LOGIN</div>
+      <div *ngIf="error|async" [class]="(error |async ) ? 'input error fadeIn animated':''">
+        <p class="red-text text-darken-1">{{error |async}}</p>
+      </div>
+      <div class="input">
+        <input placeholder="Email address" [ngClass]="displayFieldCss('email')" name="uname" id="email" type="text" autocomplete="email"
+          formControlName="email" required="" title="Type your email address." />
+        <span class="spin"></span>
+      </div>
+      <div class="input">
+        <input placeholder="Password" [ngClass]="displayFieldCss('password')" type="password" name="pass" id="pass" autocomplete="current-password"
+          formControlName="password" required="" />
+        <span class="spin"></span>
+      </div>
+      <div class="button login">
+        <button type="submit" [class]="(error |async ) ? 'shake animated':''">
+          <span>GO</span>
+          <i class="fa fa-check"></i>
+        </button>
+      </div>
+
+      <!-- <a href="" class="pass-forgot">Forgot your password?</a> -->
+
+    </div>
+
+  </div>
+</form>
