@@ -3,11 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PROSPECT } from 'src/app/appStore/interfaces/user';
 import { userTypes } from 'src/app/appStore/app.const';
 import { prospectUserDetails } from '../../../../assets/mock-users';
-import { trimValues, refineUser, validateAllFormFields, messageList } from 'src/app/appStore/utils';
+import { trimValues, refineUser } from 'src/app/appStore/utils';
 import { adminFormBuilder } from 'src/app/shared/forms/form-builder-imports';
 import { getUserDataById } from 'src/app/appStore/reducers/user.reducer';
 import { Store } from '@ngrx/store';
-import { AppState, getCRUDisSuccess } from 'src/app/appStore/reducers/app.reducer';
+import { AppState } from 'src/app/appStore/reducers/app.reducer';
 
 @Component({
   selector: 'app-prospect-user-form',
@@ -15,8 +15,8 @@ import { AppState, getCRUDisSuccess } from 'src/app/appStore/reducers/app.reduce
   styleUrls: ['../chamber-user-form/chamber-user-form.component.scss']
 })
 export class ProspectUserFormComponent implements OnInit {
-  @Output() submitProspect = new EventEmitter();
-  @Output() closeForm = new EventEmitter();
+  @Output() updateProspect = new EventEmitter();
+
   @Input() isTitle = true;
   @Input() modalMode = false;
   @Input() selectedUser;
@@ -33,28 +33,23 @@ export class ProspectUserFormComponent implements OnInit {
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
       account_name: ['', Validators.required],
-      primary_contact_person: [],
+      primary_contact_person: ['', Validators.required],
       account_contact_number: ['', Validators.required],
-      primary_contact_number: [],
+      primary_contact_number: ['', Validators.required],
       industry: ['', Validators.required],
-      primary_contact_person_designation: [],
+      primary_contact_person_designation: ['', Validators.required],
       expected_revenue: ['', Validators.required],
       isMember: [],
     });
     this.setFormControls();
-    this.store.select(getCRUDisSuccess).subscribe(response => {
-      if (response === messageList.createUserSuccess) {
-        this.prospectUserForm.reset();
-      }
-    });
-
   }
 
   setFormControls() {
     if (this.prospectUserForm) {
-      this.prospectUserForm.reset();
       if (this.isUpdate) {
         this.prospectUserForm.patchValue(this.selectedUser);
+      } else {
+        this.prospectUserForm.reset();
       }
     }
   }
@@ -65,20 +60,8 @@ export class ProspectUserFormComponent implements OnInit {
     payload.onboard_date = Date.now().toString();
     payload.isMember = this.prospectUserForm.get('isMember').value ? 'Y' : 'N';
     payload.roles = [userTypes.prospect];
-    if (this.prospectUserForm.valid && this.prospectUserForm.dirty) {
-      this.submitProspect.emit(payload);
-    } else {
-      validateAllFormFields(this.prospectUserForm);
-    }
-  }
-
-  displayFieldCss(field: string) {
-    return {
-      'invalid': !this.prospectUserForm.get(field).valid && this.prospectUserForm.get(field).touched,
-    };
-  }
-
-  closeProspectForm() {
-    this.closeForm.emit();
+    // if (this.prospectUserForm.valid) {
+    this.updateProspect.emit(payload);
+    //   }
   }
 }

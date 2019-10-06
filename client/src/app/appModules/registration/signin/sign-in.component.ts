@@ -9,8 +9,6 @@ import { AppState, getAuthenticationError, isAuthenticated } from 'src/app/appSt
 import { Go } from 'src/app/appStore/actions/router.actions';
 import { Router } from '@angular/router';
 import { LogIn } from 'src/app/appStore/actions/auth.actions';
-import { trimValues, validateAllFormFields } from 'src/app/appStore/utils';
-import { SIGNIN } from 'src/app/appStore/interfaces/user';
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
@@ -19,7 +17,7 @@ import { SIGNIN } from 'src/app/appStore/interfaces/user';
 export class SignInComponent implements OnInit {
   public error: Observable<string>;
   public loading: Observable<boolean>;
-  public signInForm: FormGroup;
+  public form: FormGroup;
   private alive = true;
 
   constructor(private formBuilder: FormBuilder,
@@ -31,31 +29,42 @@ export class SignInComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.signInForm = this.formBuilder.group({
-      email: ['', Validators.compose([Validators.required])],
+    this.form = this.formBuilder.group({
+      email: ['', Validators.required],
       password: ['', Validators.required]
     });
 
     this.error = this.store.select(getAuthenticationError);
 
+    // subscribe to success
+    // this.store.select(isAuthenticated)
+    //   .takeWhile(() => this.alive)
+    //   .filter(authenticated => authenticated)
+    //   .subscribe(value => {
+    //     this.store.dispatch(new Go({ path: ['/prospecting'] }));
+    //   });
   }
 
   OnDestroy() {
     this.alive = false;
   }
 
-  public submit() {
-    const payload = trimValues<SIGNIN>(this.signInForm.value);
-    if (this.signInForm.valid) {
-      this.store.dispatch(new LogIn(payload));
-    } else {
-      validateAllFormFields(this.signInForm);
-    }
-  }
 
-  displayFieldCss(field: string) {
-    return {
-      'invalid': !this.signInForm.get(field).valid && this.signInForm.get(field).touched,
+  public submit() {
+    // get email and password values
+    const email: string = this.form.get('email').value;
+    const password: string = this.form.get('password').value;
+
+    // trim values
+    email.trim();
+    password.trim();
+
+    // set payload
+    const payload = {
+      email: email,
+      password: password
     };
+
+    this.store.dispatch(new LogIn(payload));
   }
 }

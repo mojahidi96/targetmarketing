@@ -1,8 +1,8 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { PROSPECT, USER, CHAMBER, SALESREP } from '../../../../appStore/interfaces/user';
 import { Store } from '@ngrx/store';
-import { AppState, getCRUDisSuccess, getCRUDisFail, getUserDataById } from '../../../../appStore/reducers/app.reducer';
-import { CreateUser } from '../../../../appStore/actions/user-crud.actions';
+import { AppState, getCRUDisSuccess, getCRUDisFail, getUserDataById } from 'src/app/appStore/reducers/app.reducer';
+import { CreateUser } from 'src/app/appStore/actions/user-crud.actions';
 import { Observable } from 'rxjs';
 import { userTypes, adminSubmenuNames } from '../../../../appStore/app.const';
 
@@ -21,18 +21,16 @@ export class AdminSubmenuComponent implements OnInit {
   @Input() selectedUserType = userTypes.default;
   modalMode = true;
   @Input() openModal;
-  crudIsSuccess;
-  crudIsFail;
   constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
     this.openModal = false;
-    this.crudIsSuccess = this.store.select(getCRUDisSuccess).subscribe(response => {
+    this.store.select(getCRUDisSuccess).subscribe(response => {
       if (response !== null) {
         this.setDefault();
       }
     });
-    this.crudIsFail = this.store.select(getCRUDisFail).subscribe(response => {
+    this.store.select(getCRUDisFail).subscribe(response => {
       if (response !== null) {
         this.setDefault();
       }
@@ -45,7 +43,9 @@ export class AdminSubmenuComponent implements OnInit {
   }
 
   Modal() {
+    console.log(this.openModal);
     this.openModal = !this.openModal;
+    console.log(this.openModal);
     this.setDefault();
   }
 
@@ -61,7 +61,6 @@ export class AdminSubmenuComponent implements OnInit {
   }
 
   OnDestroy() {
-    this.crudIsSuccess.unsubscribe();
-    this.crudIsFail.unsubscribe();
+
   }
 }

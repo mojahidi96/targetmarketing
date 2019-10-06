@@ -1,8 +1,8 @@
 export const userTypes = {
-  administrator: 'administrator',
-  prospect: 'prospects',
-  chamber: 'chamber',
-  salesRep: 'sales_representative',
+  administrator: 'Administrator',
+  prospect: 'Prospect',
+  chamber: 'Chamber',
+  salesRep: 'Sales Rep',
   default: 'Choose User Type'
 };
 

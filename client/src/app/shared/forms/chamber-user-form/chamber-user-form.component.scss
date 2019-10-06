@@ -1,12 +1,3 @@
-h2 {
-    margin: 18px 0;
-    padding-bottom: 10px;
-    width: 20rem !important;
-    color: #2D2D2D;
-    font-size: 22px;
-    border-bottom: 3px solid #F78C1E;
-    font-weight: 300;
-}
 
 .form {
     max-width: calc(100vw - 10rem);
@@ -15,6 +6,7 @@ h2 {
     background: rgba(255, 255, 255, 1);
     border-radius: 8px;
     box-shadow: 0 0 40px -10px #fff;
+    padding: 20px 30px;
     box-sizing: border-box;
     position: relative;
 
@@ -29,22 +21,30 @@ form:before {
     border-radius: 5px 5px 0 0  ;
 
 }
-.form-group{
-    margin-bottom:0.4rem !important;
+.form h2 {
+    margin: 18px 0;
+    padding-bottom: 10px;
+    width: 210px;
+    color: #2D2D2D;
+    font-size: 22px;
+    border-bottom: 3px solid #F78C1E;
+    font-weight: 300;
+    margin-bottom: 30px;
 }
-
 label{
-  font-size:0.8rem;
+  font-size:1rem;
   color:#898989;
   font-weight: 300;
 }
 input {
+    width: 60%;
     padding: 10px;
     box-sizing: border-box;
     background: none;
     outline: none;
     resize: none;
     border: 0;
+    font-family: 'Montserrat', sans-serif;
     border: 2px solid #bebed2;
     transition: all .3s;
 }
@@ -119,7 +119,9 @@ button:hover {
 .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control{
     background-color: #fff;
 }
-
+.form-group{
+  padding-top:10px;
+}
 
 .column {
     float: left;
@@ -151,25 +153,10 @@ button:hover {
     margin-top: 12px;
 }
 
-// .scroll{
-//     // overflow-y: scroll;
-//     // max-height: 75vh;
-// }
-.form-control{
-    height:calc(2rem + 2px) !important;
+.scroll{
+    overflow-y: scroll;
+    max-height: 75vh;
 }
 // no content
 
 
-.invalid {
-    border:1px solid #dc3545;
-    
-}
-
-.form-check{
-    padding-top:2rem;
-}
-
-.haserror{
-    border:1px solid red;
-}

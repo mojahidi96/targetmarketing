@@ -19,10 +19,7 @@ export const UserCRUDActionTypes = {
   GETALLUSER_SUCCESS: type('[usercrud] get-all-user success'),
   GETUSERBYID: type('[usercrud] get-user-byId'),
   GETUSERBYID_FAILURE: type('[usercrud] get-user-byId error'),
-  GETUSERBYID_SUCCESS: type('[usercrud] get-user-byId success'),
-  UPDATEPASSWORD: type('[usercrud] update-user-password'),
-  UPDATEPASSWORD_FAILURE: type('[usercrud] update-user-password error'),
-  UPDATEPASSWORD_SUCCESS: type('[usercrud] update-user-password success'),
+  GETUSERBYID_SUCCESS: type('[usercrud] get-user-byId success')
 };
 
 export class CreateUser implements Action {
@@ -42,7 +39,7 @@ export class CreateUserFailure implements Action {
 
 export class EditUser implements Action {
   readonly type: string = UserCRUDActionTypes.EDITUSER;
-  constructor(public payload: USER | CHAMBER | PROSPECT | SALESREP | any) { }
+  constructor(public payload: USER | CHAMBER | PROSPECT | SALESREP) { }
 }
 
 export class EditUserSuccess implements Action {
@@ -89,31 +86,19 @@ export class GetAllUserFailure implements Action {
 export class GetUserById implements Action {
   readonly type: string = UserCRUDActionTypes.GETUSERBYID;
   constructor(public payload: any) {
+    console.log(payload);
   }
 }
 
 export class GetUserByIdSuccess implements Action {
   readonly type: string = UserCRUDActionTypes.GETUSERBYID_SUCCESS;
   constructor(public payload: any) {
+    console.log(payload);
   }
 }
 
 export class GetUserByIdFailure implements Action {
   readonly type: string = UserCRUDActionTypes.GETUSERBYID_FAILURE;
-  constructor(public payload: any) { }
-}
-
-export class UpdatePassword implements Action {
-  readonly type: string = UserCRUDActionTypes.UPDATEPASSWORD;
-  constructor(public payload: any) { }
-}
-export class UpdatePasswordSuccess implements Action {
-  readonly type: string = UserCRUDActionTypes.UPDATEPASSWORD_SUCCESS;
-  constructor(public payload: any) { }
-}
-
-export class UpdatePasswordFailure implements Action {
-  readonly type: string = UserCRUDActionTypes.UPDATEPASSWORD_FAILURE;
   constructor(public payload: any) { }
 }
 
@@ -131,6 +116,4 @@ export type AllCRUD = CreateUser |
   GetAllUserSuccess |
   GetUserById |
   GetUserByIdFailure |
-  GetUserByIdSuccess |
-  UpdatePassword |
-  UpdatePasswordSuccess | UpdatePasswordFailure;
+  GetUserByIdSuccess;

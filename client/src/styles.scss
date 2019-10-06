@@ -4,15 +4,18 @@
 @import url('./assets/animate.css');
 @import url('./assets/pace.css');
 body {
-   background-image: url('./assets/bg.png');
+   background-image: url('./assets/bg.png'),linear-gradient(to bottom right, #898989,#2D2D2D);
    background-position: center;
    background-size: cover;
    background-repeat: no-repeat;
-   min-height: 97vh;
-   overflow: hidden;
+   min-height: 100vh;
    font-family: 'Roboto', sans-serif;
 }
 
+body,
+html {
+   overflow: hidden;
+}
 
 .toast{
 width:auto !important;
@@ -24,17 +27,4 @@ width:auto !important;
 #toast-container{
   top:0px;
   right: 0% !important;
-}
-
-.btn {
-  height:auto;
-}
-
-
-.orange-text{
-  color:#f78c1e;
-}
-
-h1,h2,h3,h4,h5,h6{
-  font-weight:400;
 }

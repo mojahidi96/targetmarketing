@@ -1,4 +1,4 @@
-<form (ngSubmit)="submit()" [formGroup]="signInForm" novalidate>
+<form (ngSubmit)="submit()" [formGroup]="form" novalidate>
   <div class="materialContainer">
     <div class="box">
       <div class="title">LOGIN</div>
@@ -6,23 +6,30 @@
         <p class="red-text text-darken-1">{{error |async}}</p>
       </div>
       <div class="input">
-        <input placeholder="Email address" [ngClass]="displayFieldCss('email')" name="uname" id="email" type="text" autocomplete="email"
-          formControlName="email" required="" title="Type your email address." />
+        <input placeholder="Email address" name="uname" id="uname" type="text" autocomplete="email" formControlName="email" />
         <span class="spin"></span>
       </div>
       <div class="input">
-        <input placeholder="Password" [ngClass]="displayFieldCss('password')" type="password" name="pass" id="pass" autocomplete="current-password"
-          formControlName="password" required="" />
+        <input placeholder="Password" type="password" name="pass" id="pass" autocomplete="current-password" formControlName="password"
+        />
         <span class="spin"></span>
       </div>
+      <div class="input mt-2">
+        <select class="browser-default">
+          <option value="" disabled selected>Choose your option</option>
+          <option value="1">Standard User</option>
+          <option value="2">Chamber Login</option>
+          <option value="3">Administrator</option>
+        </select>
+      </div>
       <div class="button login">
-        <button type="submit" [class]="(error |async ) ? 'shake animated':''">
+        <button [disabled]="form.invalid" type="submit" [class]="(error |async ) ? 'shake animated':''">
           <span>GO</span>
           <i class="fa fa-check"></i>
         </button>
       </div>
 
-      <!-- <a href="" class="pass-forgot">Forgot your password?</a> -->
+      <a href="" class="pass-forgot">Forgot your password?</a>
 
     </div>
 

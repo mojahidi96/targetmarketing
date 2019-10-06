@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { AdminManagerComponent } from './admin-manager.component';
 import { AdminRouting } from './admin-manager.routing';
 
-import { SharedModule } from '../../shared/shared.module';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { AdminNavbarComponent } from './components/admin-navbar/admin-navbar.component';
 import { AdminSubmenuComponent } from './components/admin-submenu/admin-submenu.component';
 import { UserPageComponent } from './pages/user-page/user-page.component';
 import { FormsModule } from '@angular/forms';
-import { FilterPipe } from '../../appPipes/filter.pipe';
+import { FilterPipe } from 'src/app/appPipes/filter.pipe';
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +16,6 @@ import { FilterPipe } from '../../appPipes/filter.pipe';
     SharedModule,
     FormsModule
   ],
-  declarations: [AdminManagerComponent, AdminSubmenuComponent, UserPageComponent, FilterPipe]
+  declarations: [AdminManagerComponent, AdminNavbarComponent, AdminSubmenuComponent, UserPageComponent, FilterPipe]
 })
 export class AdminManagerModule { }

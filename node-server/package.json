@@ -11,11 +11,7 @@
     "client": "npm start --prefix ../client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
-  "keywords": [
-    "social",
-    "network",
-    "intelegencia"
-  ],
+  "keywords": ["social", "network", "intelegencia"],
   "author": "neeraj chauhan",
   "license": "ISC",
   "dependencies": {

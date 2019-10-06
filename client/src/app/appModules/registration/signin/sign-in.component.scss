@@ -124,6 +124,7 @@
 .input label,
 .button button {
    font-family: 'Roboto', sans-serif;
+   font-size: 24px;
    color: rgba(0, 0, 0, 0.8);
    font-weight: 300;
 }
@@ -365,7 +366,7 @@
 
 .materialContainer {
    width: 100%;
-   max-width: 360px;
+   max-width: 460px;
    position: absolute;
    top: 50%;
    left: 50%;

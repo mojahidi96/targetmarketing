@@ -7,8 +7,6 @@ import { SalesRepUserFormComponent } from './forms/sales-rep-user-form/sales-rep
 import { AdminUserFormComponent } from './forms/admin-user-form/admin-user-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalComponent } from './modal/modal.component';
-import { NavbarComponent } from 'src/app/shared/navbar/navbar.component';
-import { UpdatePasswordComponent } from './update-password/update-password.component';
 
 
 @NgModule({
@@ -18,11 +16,8 @@ import { UpdatePasswordComponent } from './update-password/update-password.compo
     ProspectUserFormComponent,
     SalesRepUserFormComponent,
     AdminUserFormComponent,
-    NavbarComponent,
-    ModalComponent,
-    UpdatePasswordComponent,
-  ],
+    ModalComponent],
   exports: [SearchComponent, ChamberUserFormComponent, ProspectUserFormComponent, SalesRepUserFormComponent,
-    AdminUserFormComponent, ModalComponent, NavbarComponent, UpdatePasswordComponent]
+    AdminUserFormComponent, ModalComponent]
 })
 export class SharedModule { }

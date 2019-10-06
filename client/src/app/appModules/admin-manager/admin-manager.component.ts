@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { submenuName } from '../../appStore/app.const';
+import { submenuName } from 'src/app/appStore/app.const';
 
 @Component({
   selector: 'app-admin-manager',

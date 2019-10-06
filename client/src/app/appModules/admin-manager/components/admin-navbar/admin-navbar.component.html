@@ -1,0 +1,23 @@
+<nav>
+  <div class="nav-wrapper navbar">
+    <a href="#!" class="brand-logo">
+      <img class="logo" src="../../../assets/tmlogo.png" /> </a>
+    <ul class="right hide-on-med-and-down">
+      <li class="black-text">
+        <span *ngIf="username" class="profileName">
+          <i class="orange-text">Welcome!</i> {{username}}
+        </span>
+      </li>
+      <li>
+        <a href="">
+          <i class="material-icons orange-text ">search</i>
+        </a>
+      </li>
+      <li>
+        <a (click)="logout()">
+          <i class="material-icons orange-text">exit_to_app</i>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

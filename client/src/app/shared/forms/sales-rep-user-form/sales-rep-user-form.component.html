@@ -1,49 +1,44 @@
-<h2 *ngIf="isTitle">{{isUpdate?'Update':'Create'}} Sales Rep Profile</h2>
-<div class="container row">
-
-  <form class="form col-md-8 scroll" (ngSubmit)="onSubmit()" [formGroup]="salesRedUserForm" novalidate>
-    <div class="form-group col-md-12">
+<div class="container">
+  <form class="form row scroll" (ngSubmit)="onSubmit()" [formGroup]="salesRedUserForm" novalidate>
+    <h2 *ngIf="isTitle">{{isUpdate?'Update':'Create'}} Sales Rep Profile</h2>
+    <div class="form-group col s12">
       <label for="first_name">First Name *:</label>
       <div class="relative">
-        <input formControlName="first_name" [ngClass]="displayFieldCss('first_name')" class="form-control" id="first_name" type="text"
-          pattern="[a-zA-Z\s]+" required="" autofocus="" title="Type your first name here." autocomplete="" placeholder="Type your first name here...">
+        <input formControlName="first_name" [class.invalid] = "salesRedUserForm.controls['first_name'].invalid && salesRedUserForm.controls['first_name'].dirty" class="form-control" id="name" type="text" pattern="[a-zA-Z\s]+" required="" autofocus=""
+        title="Type your first name here." autocomplete="" placeholder="Type your first name here...">
         <i class="material-icons">person</i>
       </div>
     </div>
-    <div class="form-group col-md-12">
+    <div class="form-group col s12">
       <label for="last_name">Last Name *:</label>
       <div class="relative">
-        <input formControlName="last_name" [ngClass]="displayFieldCss('last_name')" class="form-control" id="last_name" type="text"
-          pattern="[a-zA-Z\s]+" required="" autofocus="" title="Type your last name here." autocomplete="" placeholder="Type your last name here...">
+        <input formControlName="last_name" [class.invalid] = "salesRedUserForm.controls['last_name'].invalid && salesRedUserForm.controls['last_name'].dirty" class="form-control" id="name" type="text" pattern="[a-zA-Z\s]+" required="" autofocus=""
+          title="Type your last name here." autocomplete="" placeholder="Type your last name here...">
         <i class="material-icons">person</i>
       </div>
     </div>
-    <div class="form-group col-md-12">
+    <div class="form-group col s12">
       <label for="email">Email address *:</label>
       <div class="relative">
-        <input formControlName="email" email [ngClass]="displayFieldCss('email')" class="form-control" type="email" required="" placeholder="Type your email address..."
-          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="Type your email address.">
+        <input formControlName="email" email [class.invalid] = "salesRedUserForm.controls['email'].invalid && salesRedUserForm.controls['email'].dirty" class="form-control" type="email" required="" placeholder="Type your email address..." pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="Type your email address.">
         <i class="material-icons">email</i>
       </div>
     </div>
-    <div class="form-group col-md-12">
+    <div class="form-group col s12">
       <label for="chamber_id">Chamber Assigned To:</label>
       <div class="relative">
-        <input formControlName="chamber_id" class="form-control" type="text" [attr.disabled]="isUpdate ? '' : null" placeholder="Type chamber assigned..."
-          title="Type chamber assigned.">
+        <input formControlName="chamber_id" class="form-control" type="text" disabled placeholder="Type chamber assigned..." title="Type chamber assigned.">
         <i class="material-icons">domain</i>
       </div>
     </div>
-
-    <div class="tright col-md-12" *ngIf="!modalMode">
-      <a>
-        <button class="movebtn movebtnre" type="Reset" *ngIf="!isUpdate">
+    
+    <div class="tright col s12" *ngIf="!modalMode">
+      <a href="">
+        <button class="movebtn movebtnre" type="Reset">
           <i class="fa fa-fw fa-refresh"></i> Reset </button>
-        <button class="movebtn movebtnre" type="button" *ngIf="isUpdate" (click)="closeSalesRepForm()"> Close </button>
-
       </a>
-      <a>
-        <button class="movebtn movebtnsu" type="Submit">{{isUpdate?'Update':'Create'}} User
+      <a href="">
+        <button class="movebtn movebtnsu" type="Submit" >{{isUpdate?'Update':'Create'}} User
           <i class="fa fa-fw fa-paper-plane"></i>
         </button>
       </a>

@@ -13,7 +13,7 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
 
   }
-
+  
   onSearchChange(value) {
     this.searchInput.emit(value);
   }

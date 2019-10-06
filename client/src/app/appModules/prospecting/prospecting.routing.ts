@@ -1,7 +1,7 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ProspectingComponent } from './prospecting.component';
-import { AuthenticationGuard } from '../../appGuards/authentication.guard';
+import { AuthenticationGuard } from 'src/app/appGuards/authentication.guard';
 
 
 // routes

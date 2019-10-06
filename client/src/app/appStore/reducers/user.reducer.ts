@@ -1,6 +1,5 @@
 import { USER, CHAMBER, PROSPECT, SALESREP, USERLIST } from '../interfaces/user';
 import { AllCRUD, UserCRUDActionTypes } from '../actions/user-crud.actions';
-import { messageList } from 'src/app/appStore/utils';
 
 
 export interface State {
@@ -24,90 +23,66 @@ export function reducer(state: any = initialState, action: AllCRUD): State {
     case UserCRUDActionTypes.CREATEUSER_SUCCESS: {
       return {
         ...state,
-        success: messageList.createUserSuccess,
+        success: 'User Created Successfully',
         user: action.payload,
       };
     }
     case UserCRUDActionTypes.CREATEUSER_FAILURE: {
       return {
         ...state,
-        error: messageList.createUserFailure,
+        error: 'unable to perform action at this time'
       };
     }
     case UserCRUDActionTypes.EDITUSER_SUCCESS: {
       return {
         ...state,
-        success: messageList.editUserSuccess,
+        success: 'User Information updated Successfully',
         user: action.payload,
       };
     }
     case UserCRUDActionTypes.EDITUSER_FAILURE: {
       return {
         ...state,
-        error: messageList.editUserFailure,
+        error: 'Could not update the user information',
       };
     }
     case UserCRUDActionTypes.DELETEUSER_SUCCESS: {
       return {
         ...state,
-        success: messageList.deleteUserSuccess,
+        success: 'User Deleted Successfully',
         user: action.payload,
       };
     }
     case UserCRUDActionTypes.DELETEUSER_FAILURE: {
       return {
         ...state,
-        error: messageList.deleteUserFailure
+        error: 'Could not delete the user',
       };
     }
     case UserCRUDActionTypes.GETALLUSER_SUCCESS: {
       return {
         ...state,
-        success: messageList.getAllUserSuccess,
+        success: 'Userlist fetched Successfully',
         userList: action.payload,
       };
     }
     case UserCRUDActionTypes.GETALLUSER_FAILURE: {
       return {
         ...state,
-        error: messageList.getAllUserFailure
+        error: 'Could not retrieve userlist',
       };
     }
-
-    case UserCRUDActionTypes.GETUSERBYID: {
-      return {
-        ...state,
-        selectedUser: null,
-        success: ''
-      };
-    }
-
     case UserCRUDActionTypes.GETUSERBYID_SUCCESS: {
       return {
         ...state,
-        success: messageList.getUserDataSuccess,
+        success: 'User data fetched Successfully',
         selectedUser: action.payload
       };
     }
     case UserCRUDActionTypes.GETUSERBYID_FAILURE: {
       return {
         ...state,
-        error: messageList.getUserDataFailure,
-      };
-    }
-
-    case UserCRUDActionTypes.UPDATEPASSWORD_SUCCESS: {
-      return {
-        ...state,
-        success: 'Password Updated',
-        error: ''
-      };
-    }
-    case UserCRUDActionTypes.UPDATEPASSWORD_FAILURE: {
-      return {
-        ...state,
-        success: '',
-        error: 'Unable to update password'
+        error: 'Could not retrieve user data',
       };
     }
     default:

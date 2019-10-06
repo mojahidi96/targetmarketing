@@ -54,6 +54,7 @@ export function reducer(state: any = initialState, action: All): State {
     }
     default:
       const data = JSON.parse(sessionStorage.getItem('appState'));
+      console.log(data);
       if (data !== null && data.authenticated) {
         return data;
       } else {

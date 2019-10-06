@@ -32,12 +32,12 @@ export class AuthService {
     const getHeaders: HttpHeaders = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    const url = `${this.BASE_URL}api/users/login`;
-    return this.http.post<USER>(url, { email: name, password: pass }, { headers: getHeaders });
+    const url = `${this.BASE_URL}user/login?_format=json`;
+    return this.http.post<USER>(url, { name, pass }, { headers: getHeaders });
   }
 
   signUp(email: string, password: string): Observable<USER> {
-    const url = `${this.BASE_URL}api/users/register`;
+    const url = `${this.BASE_URL}/register`;
     return this.http.post<USER>(url, { email, password });
   }
 

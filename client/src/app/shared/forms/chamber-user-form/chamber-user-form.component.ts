@@ -2,11 +2,11 @@ import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges } from '@
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CHAMBER } from 'src/app/appStore/interfaces/user';
 import { userTypes } from 'src/app/appStore/app.const';
-import { trimValues, refineUser, validateAllFormFields, messageList } from 'src/app/appStore/utils';
+import { trimValues, refineUser } from 'src/app/appStore/utils';
 import { adminFormBuilder } from 'src/app/shared/forms/form-builder-imports';
 import { getUserDataById } from 'src/app/appStore/reducers/user.reducer';
 import { Store } from '@ngrx/store';
-import { AppState, getCRUDisSuccess } from 'src/app/appStore/reducers/app.reducer';
+import { AppState } from 'src/app/appStore/reducers/app.reducer';
 
 @Component({
   selector: 'app-chamber-user-form',
@@ -14,8 +14,7 @@ import { AppState, getCRUDisSuccess } from 'src/app/appStore/reducers/app.reduce
   styleUrls: ['./chamber-user-form.component.scss']
 })
 export class ChamberUserFormComponent implements OnInit {
-  @Output() submitChamber = new EventEmitter();
-  @Output() closeForm = new EventEmitter();
+  @Output() updateChamber = new EventEmitter();
   @Input() isTitle = true;
   @Input() modalMode = false;
   @Input() selectedUser;
@@ -34,48 +33,31 @@ export class ChamberUserFormComponent implements OnInit {
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
       email: ['', Validators.compose([Validators.required, Validators.email])],
+      account_name: [],
       primary_contact_person: [],
+      account_contact_number: [],
       primary_contact_number: [],
+      industry: [],
       primary_contact_person_designation: [],
-      account_name: ['', Validators.required],
-      account_contact_number: ['', Validators.required],
-      industry: ['', Validators.required],
       logo: []
     });
     this.setFormControls();
-    this.store.select(getCRUDisSuccess).subscribe(response => {
-      if (response === messageList.createUserSuccess) {
-        this.chamberUserForm.reset();
-      }
-    });
-
   }
 
   setFormControls() {
     if (this.chamberUserForm) {
-      this.chamberUserForm.reset();
       if (this.isUpdate) {
         this.chamberUserForm.patchValue(this.selectedUser);
+      } else {
+        this.chamberUserForm.reset();
       }
     }
   }
   onSubmit() {
     const payload: CHAMBER = trimValues<CHAMBER>(this.chamberUserForm.value);
     payload.roles = [userTypes.chamber];
-    if (this.chamberUserForm.valid && this.chamberUserForm.dirty) {
-      this.submitChamber.emit(payload);
-    } else {
-      validateAllFormFields(this.chamberUserForm);
+    if (this.chamberUserForm.valid) {
+      this.updateChamber.emit(payload);
     }
-  }
-
-  displayFieldCss(field: string) {
-    return {
-      'invalid': !this.chamberUserForm.get(field).valid && this.chamberUserForm.get(field).touched,
-    };
-  }
-
-  closeChamberForm() {
-    this.closeForm.emit();
   }
 }

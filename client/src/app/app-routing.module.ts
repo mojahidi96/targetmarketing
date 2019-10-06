@@ -6,6 +6,10 @@ import { NotfoundComponent } from './shared/notfound/notfound.component';
 
 const routes: Routes = [
   {
+    path: 'prospecting',
+    loadChildren: './appModules/prospecting/prospecting.module#ProspectingModule'
+  },
+  {
     path: 'dashboard',
     loadChildren: './appModules/admin-manager/admin-manager.module#AdminManagerModule'
   },
@@ -15,7 +19,11 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: './appModules/registration/registration.module#AuthenticationModule'
+    component: SignInComponent
+  },
+  {
+    path: 'logout',
+    component: SignoutComponent
   },
   {
     path: '',
@@ -33,7 +41,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

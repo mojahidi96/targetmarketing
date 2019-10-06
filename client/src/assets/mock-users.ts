@@ -4,39 +4,98 @@ export const userList = [
   {
     'name': 'admin',
     'uid': '1',
-    'status': false,
     'role': 'Administrator'
   },
   {
     'name': 'Prospect',
     'uid': '2',
-    'status': true,
     'role': 'Chamber'
   },
   {
     'name': 'Prospect2',
     'uid': '3',
-    'status': true,
-    'role': 'Prospects'
+    'role': 'Prospect'
   },
   {
     'name': 'Jeo',
     'uid': '5',
-    'status': true,
-    'role': 'Sales Representative'
+    'role': 'Sales Rep'
   }
   ,
   {
     'name': 'Paritoshik',
     'uid': '6',
-    'status': true,
     'role': 'Chamber'
   },
   {
     'name': 'paul',
     'uid': '7',
-    'role': 'Chamber',
-    'status': true,
+    'role': 'Chamber'
+  },
+  {
+    'name': 'paulson',
+    'uid': '8',
+    'role': 'Chamber'
+  },
+  {
+    'name': 'paulon',
+    'uid': '9',
+    'role': 'Chamber'
+  },
+  {
+    'name': 'paulefon',
+    'uid': '10',
+    'role': 'Chamber'
+  },
+  {
+    'name': 'paulefon1',
+    'uid': '11',
+    'role': 'Chamber'
+  },
+  {
+    'name': 'paulefyyon',
+    'uid': '12',
+    'role': 'Chamber'
+  },
+  {
+    'name': 'paulefon121',
+    'uid': '13',
+    'role': 'Chamber'
+  },
+  {
+    'name': 'paul123',
+    'uid': '14',
+    'role': 'Chamber'
+  },
+  {
+    'name': 'ere',
+    'uid': '15',
+    'role': 'Chamber'
+  },
+  {
+    'name': 'r34r34r34',
+    'uid': '16',
+    'role': 'Chamber'
+  },
+  {
+    'name': 'fwerfw',
+    'uid': '17',
+    'role': 'Chamber'
+  },
+  {
+    'name': 'paul183',
+    'uid': '18',
+    'role': 'Administrator, Chamber, Sales Representative'
+  },
+  {
+    'name': 'tyjtyj',
+    'uid': '19',
+    'role': 'Chamber'
+  },
+  {
+    'name': 'dew',
+    'uid': '20',
+    'role': 'Chamber'
   }
 ];
 
@@ -50,7 +109,7 @@ export const userDetails: USER[] =
     'roles': [
       'administrator',
       'authenticated'
-    ],
+    ]
   }];
 
 export const prospectUserDetails = {

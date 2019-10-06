@@ -1,4 +1,4 @@
-import { Validators } from '@angular/forms';
+import { Validators } from "@angular/forms";
 export const adminFormBuilder = {
     first_name: ['', Validators.required],
     last_name: ['', Validators.required],

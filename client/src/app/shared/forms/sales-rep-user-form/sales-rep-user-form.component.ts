@@ -2,11 +2,11 @@ import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges } from '@
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { SALESREP } from 'src/app/appStore/interfaces/user';
 import { userTypes } from 'src/app/appStore/app.const';
-import { trimValues, validateAllFormFields, messageList } from 'src/app/appStore/utils';
+import { trimValues, refineUser } from 'src/app/appStore/utils';
 import { adminFormBuilder } from 'src/app/shared/forms/form-builder-imports';
 import { getUserDataById } from 'src/app/appStore/reducers/user.reducer';
 import { Store } from '@ngrx/store';
-import { AppState, getCRUDisSuccess } from 'src/app/appStore/reducers/app.reducer';
+import { AppState } from 'src/app/appStore/reducers/app.reducer';
 
 @Component({
   selector: 'app-sales-rep-user-form',
@@ -14,14 +14,15 @@ import { AppState, getCRUDisSuccess } from 'src/app/appStore/reducers/app.reduce
   styleUrls: ['../chamber-user-form/chamber-user-form.component.scss']
 })
 export class SalesRepUserFormComponent implements OnInit {
-  @Output() submitSalesRep = new EventEmitter();
-  @Output() closeForm = new EventEmitter();
+  @Output() updateSalesRep = new EventEmitter();
+
   @Input() isTitle = true;
   @Input() modalMode = false;
   @Input() selectedUser;
   @Input() isUpdate = false;
   salesRedUserForm: FormGroup;
   selectedUserDetails;
+
   constructor(private formBuilder: FormBuilder, private store: Store<AppState>) { }
   // tslint:disable-next-line:use-life-cycle-interface
   ngOnChanges(changes: SimpleChanges) {
@@ -36,38 +37,22 @@ export class SalesRepUserFormComponent implements OnInit {
       chamber_id: []
     });
     this.setFormControls();
-    this.store.select(getCRUDisSuccess).subscribe(response => {
-      if (response === messageList.createUserSuccess) {
-        this.salesRedUserForm.reset();
-      }
-    });
-
   }
   setFormControls() {
     if (this.salesRedUserForm) {
-      this.salesRedUserForm.reset();
       if (this.isUpdate) {
         this.salesRedUserForm.patchValue(this.selectedUser);
+      } else {
+        this.salesRedUserForm.reset();
       }
     }
   }
   onSubmit() {
     const payload: SALESREP = trimValues<SALESREP>(this.salesRedUserForm.value);
     payload.roles = [userTypes.salesRep];
-    if (this.salesRedUserForm.valid && this.salesRedUserForm.dirty) {
-      this.submitSalesRep.emit(payload);
-    } else {
-      validateAllFormFields(this.salesRedUserForm);
+
+    if (this.salesRedUserForm.valid) {
+      this.updateSalesRep.emit(payload);
     }
-  }
-
-  displayFieldCss(field: string) {
-    return {
-      'invalid': !this.salesRedUserForm.get(field).valid && this.salesRedUserForm.get(field).touched,
-    };
-  }
-
-  closeSalesRepForm() {
-    this.closeForm.emit();
   }
 }

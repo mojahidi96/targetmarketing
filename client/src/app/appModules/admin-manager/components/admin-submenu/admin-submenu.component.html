@@ -1,5 +1,38 @@
-<ul class="nav p-2 orange-bg">
-    <li class="nav-item mr-3 text-white" *ngFor="let name of menuNames">
+<nav>
+  <div class="nav-wrapper orange-bg">
+    <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+      <i class="material-icons">menu</i>
+    </a>
+    <ul class="left hide-on-med-and-down">
+      <li *ngFor="let name of menuNames">
         <a (click)="sideBarEvent(name)">{{name}}</a>
       </li>
-</ul>
+    </ul>
+    <!-- <ul class="right hide-on-med-and-down">
+      <li>
+        <a class="active" (click)="Modal()">Create User</a>
+      </li>
+    </ul> -->
+  </div>
+</nav>
+<!-- <div id="modal1" *ngIf="openModal" [class]="(openModal === true)? 'modal open fadeIn animated': 'model'">
+  <div class="modal-content" [ngSwitch]="selectedUserType">
+    <h5>
+      <span *ngIf="selectedUserType !== alluserTypes.default">Add</span> {{selectedUserType}}</h5>
+    <app-chamber-user-form *ngSwitchCase="alluserTypes.chamber" [isTitle]="istitle" [modalMode]="modalMode" (chamberFormSubmitted)="formSubmission($event)"></app-chamber-user-form>
+    <app-admin-user-form *ngSwitchCase="alluserTypes.administrator" [isTitle]="istitle" [modalMode]="false" (updateAdmin)="formSubmission($event)"></app-admin-user-form>
+    <app-sales-rep-user-form *ngSwitchCase="alluserTypes.salesRep" [isTitle]="istitle" [modalMode]="modalMode" (salesRepFormSubmitted)="formSubmission($event)"></app-sales-rep-user-form>
+    <app-prospect-user-form *ngSwitchCase="alluserTypes.prospect" [isTitle]="istitle" [modalMode]="modalMode" (prospectFormSubmitted)="formSubmission($event)"></app-prospect-user-form>
+    <div *ngSwitchDefault class="row s4">
+      <select class="browser-default" (change)="setUserType($event)">
+        <option value="" disabled selected>User Type</option>
+        <option [value]="alluserTypes.administrator">Administrator</option>
+        <option [value]="alluserTypes.chamber">Chamber</option>
+        <option [value]="alluserTypes.prospect">Prospect</option>
+        <option [value]="alluserTypes.salesRep">Sales Rep</option>
+      </select>
+    </div>
+  </div>
+  
+</div>
+<div *ngIf="openModal" [class]="(openModal === true)? 'modal-overlay openoverlay':''"></div> -->

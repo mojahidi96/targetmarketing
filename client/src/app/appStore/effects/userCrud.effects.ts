@@ -8,12 +8,12 @@ import {
   UserCRUDActionTypes, CreateUser, CreateUserSuccess, CreateUserFailure,
   EditUserSuccess, EditUserFailure, EditUser, DeleteUser,
   DeleteUserSuccess, DeleteUserFailure, GetAllUser, GetAllUserFailure,
-  GetAllUserSuccess, GetUserById, GetUserByIdSuccess, GetUserByIdFailure, UpdatePassword, UpdatePasswordSuccess, UpdatePasswordFailure
+  GetAllUserSuccess, GetUserById, GetUserByIdSuccess, GetUserByIdFailure
 } from '../actions/user-crud.actions';
 import { of } from 'rxjs/internal/observable/of';
 import { tap } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
-import { defineUser, checkPayload } from 'src/app/appStore/utils';
+import { defineUser } from 'src/app/appStore/utils';
 @Injectable()
 export class UserCrudEffects {
 
@@ -23,9 +23,7 @@ export class UserCrudEffects {
     .debounceTime(500)
     .map((action: CreateUser) => action.payload)
     .switchMap(payload => {
-      let reqpayload = defineUser(payload, payload.roles[0]);
-      reqpayload = checkPayload(reqpayload, payload.roles[0]);
-      console.log(reqpayload);
+      const reqpayload = defineUser(payload, payload.roles[0]);
       return this.userService.createuser(reqpayload)
         .map((response) => {
           return new CreateUserSuccess(response);
@@ -60,19 +58,7 @@ export class UserCrudEffects {
     .debounceTime(500)
     .map((action: EditUser) => action.payload)
     .switchMap(payload => {
-      let reqpayload = {};
-      // if (payload.isUpdatePass) {
-      //   reqpayload = {
-      //     'user': payload.password,
-      //     'id': payload.id,
-      //   };
-      // } else {
-      reqpayload = {
-        'user': defineUser(payload['user'], payload['user'].roles[0]),
-        'id': payload['id'],
-      };
-      // }
-
+      const reqpayload = defineUser(payload, payload.roles[0]);
       return this.userService.editUser(reqpayload)
         .map((response) => {
           return new EditUserSuccess(response);
@@ -94,7 +80,7 @@ export class UserCrudEffects {
 
   @Effect({ dispatch: false })
   public EditUserFailure: Observable<Action> = this.actions.pipe(
-    ofType(UserCRUDActionTypes.EDITUSER_FAILURE),
+    ofType(UserCRUDActionTypes.EDITUSER_SUCCESS),
     tap((error) => {
       this.toastr.error('Unable to Update User information', 'Operation Error', {
         timeOut: 3000,
@@ -155,9 +141,9 @@ export class UserCrudEffects {
     ofType(UserCRUDActionTypes.GETALLUSER_SUCCESS),
     tap((response) => {
       // toast notification with response
-      // this.toastr.success('User list Successfully fetched', 'Operation Success', {
-      //   timeOut: 3000,
-      // });
+      this.toastr.success('User list Successfully fetched', 'Operation Success', {
+        timeOut: 3000,
+      });
     }));
 
   @Effect({ dispatch: false })
@@ -178,6 +164,7 @@ export class UserCrudEffects {
     .switchMap(payload => {
       return this.userService.getUserByID(payload)
         .map((response) => {
+          console.log(response);
           return new GetUserByIdSuccess(response);
         })
         .catch((error) => {
@@ -189,62 +176,24 @@ export class UserCrudEffects {
   public GetUserByIdSuccess: Observable<Action> = this.actions.pipe(
     ofType(UserCRUDActionTypes.GETUSERBYID_SUCCESS),
     tap((response) => {
+      console.log(response);
       // toast notification with response
-      // this.toastr.success('User data Successfully fetched', 'Operation Success', {
-      //   timeOut: 3000,
-      // });
+      this.toastr.success('User data Successfully fetched', 'Operation Success', {
+        timeOut: 3000,
+      });
     }));
 
   @Effect({ dispatch: false })
   public GetUserByIdFailure: Observable<Action> = this.actions.pipe(
-    ofType(UserCRUDActionTypes.GETUSERBYID_FAILURE),
+    ofType(UserCRUDActionTypes.GETALLUSER_FAILURE),
     tap((error) => {
       // toast notification with response
-      this.toastr.error('Unable to get User', 'Operation Error', {
+      console.log(error);
+      this.toastr.error('Unable to get Users list', 'Operation Error', {
         timeOut: 3000,
       });
     }));
 
-  @Effect()
-  public UpdatePassword: Observable<Action> = this.actions
-    .ofType(UserCRUDActionTypes.UPDATEPASSWORD)
-    .debounceTime(500)
-    .map((action: UpdatePassword) => action.payload)
-    .switchMap(payload => {
-      const reqpayload = {
-        'user': payload.password,
-        'id': payload.id,
-      };
-
-      return this.userService.editUser(reqpayload)
-        .map((response) => {
-          return new UpdatePasswordSuccess(response);
-        })
-        .catch((error) => {
-          return of(new UpdatePasswordFailure({ error: error }));
-        });
-    });
-
-
-  @Effect({ dispatch: false })
-  public UpdatePasswordSuccess: Observable<Action> = this.actions.pipe(
-    ofType(UserCRUDActionTypes.UPDATEPASSWORD_SUCCESS),
-    tap((response) => {
-      // toast notification with response
-      this.toastr.success('Password updated successfully', 'Operation Success', {
-        timeOut: 3000,
-      });
-    }));
-
-  @Effect({ dispatch: false })
-  public UpdatePasswordFailure: Observable<Action> = this.actions.pipe(
-    ofType(UserCRUDActionTypes.UPDATEPASSWORD_FAILURE),
-    tap((error) => {
-      // toast notification with response
-      this.toastr.error('Unable to get User', 'Operation Error', {
-        timeOut: 3000,
-      });
-    }));
   constructor(
     private actions: Actions,
     private userService: UserService,

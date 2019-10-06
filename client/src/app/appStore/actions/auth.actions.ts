@@ -2,7 +2,9 @@ import { Action } from '@ngrx/store';
 
 // import type function
 import { type } from '../utils';
-import { SIGNIN } from 'src/app/appStore/interfaces/user';
+
+// import models
+import { USER } from '../interfaces/user';
 
 export const AuthActionTypes = {
   LOGIN: type('[users] Authenticate'),
@@ -16,7 +18,7 @@ export const AuthActionTypes = {
 export class LogIn implements Action {
   readonly type: string = AuthActionTypes.LOGIN;
 
-  constructor(public payload: SIGNIN) { }
+  constructor(public payload: { email: string, password: string }) { }
 }
 
 

@@ -48,17 +48,13 @@ export class AuthEffects {
       sessionStorage.setItem('user', JSON.stringify(user.payload.current_user));
       sessionStorage.setItem('csrf', user.payload.csrf_token);
       sessionStorage.setItem('logoutToken', user.payload.logout_token);
-      if (!user.payload.current_user.roles) {
-        this.router.navigateByUrl('/prospecting');
-      } else {
-        user.payload.current_user.roles.forEach(role => {
-          if (role === 'administrator' || role === 'chamber') {
-            this.router.navigateByUrl('/dashboard');
-          } else if (role === 'sales_representative') {
-            this.router.navigateByUrl('/prospecting');
-          }
-        });
-      }
+      user.payload.current_user.roles.forEach(role => {
+        if (role === 'administrator' || role === 'chamber') {
+          this.router.navigateByUrl('/dashboard');
+        } else if (role === 'Standard User') {
+          this.router.navigateByUrl('/prospecting');
+        }
+      });
     })
   );
 

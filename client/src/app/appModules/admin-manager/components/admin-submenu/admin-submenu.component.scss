@@ -1,6 +1,13 @@
 .orange-bg{
   background-color:#F78C1E;
 }
+nav{
+  height:42px;
+  line-height:42px;
+  div{
+    padding-left:0.4rem;
+  }
+}
 .open{
    z-index: 1003;
     display: block;

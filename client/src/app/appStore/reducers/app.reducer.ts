@@ -10,7 +10,7 @@ import { storeFreeze } from 'ngrx-store-freeze';
 
 import * as Auth from './auth.reducer';
 import * as USERCRUD from './user.reducer';
-import { environment } from '../../../environments/environment';
+import { environment } from 'src/environments/environment';
 
 export interface AppState {
   router: fromRouter.RouterReducerState;

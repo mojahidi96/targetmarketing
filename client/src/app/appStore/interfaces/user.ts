@@ -1,13 +1,7 @@
-export interface SIGNIN {
-  email: string;
-  password: string;
-}
-
 export interface USERLIST {
   name: string;
   uid: string;
   role: string;
-  status: boolean;
 }
 
 export interface USER {

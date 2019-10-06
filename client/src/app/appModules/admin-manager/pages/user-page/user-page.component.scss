@@ -1,32 +1,48 @@
-.user-page{
-  background:white;
+
+.column {
+    float: left;
+    background:white;
+    height: 100vh; /* Should be removed. Only for demonstration */
 }
 
+.sidebar {
+    width: 12%;
+    border-right: 1px solid #eee;
+
+}
 .userList{
   border-top:1px solid #eee;
-  overflow-y: scroll;
-  max-height: 80vh;
-  height:80vh;
-  margin-top:-1rem;
-  a{
-    div{
-      label{
-        width:8rem;
-      }
-      .deletebutton{
-        i:hover{
-          color:red;
-          cursor: pointer;
-        }
-      }
-    }
-  }
+}
+.content {
+    width: 88%;
 }
 
 .orange-text{
   color:#F78C1E;
 }
+.margin-0{
+  margin:0px;
+}
 
+.collection{
+  a.collection-item.active{
+    background-color:#F78C1E;
+    color:white;
+  }
+}
+.collection{
+  a.collection-item{
+    color:black;
+}
+}
+.userlist{
+   width: 20%;
+    border-right: 1px solid #eee;
+
+}
+.userinfo{
+  width:80%;
+}
 .list{
   border-bottom:1px solid #eee;
   padding-left:15px;
@@ -35,9 +51,6 @@
     label{
       font-weight: 500;
       flex-grow:2;
-      span{
-        width: 12vw;
-      }
     }
     i{
       font-size:28px;
@@ -87,18 +100,15 @@
   animation: floatingShadow 3s ease-in-out infinite;
 }
 .role{
-  padding-left: 1rem;
-  font-size: 80%;
-  position: absolute;
-  top:20px;
+  padding-left: 2.4rem;
+  font-size: 90%;
 }
 .openoverlay{
   z-index: 1002; display: block; opacity: 0.5;
  }
-.radiobutton{
-  margin-top:4px;
-  margin-right:4px;
-}
+
+//  =======
+
 .open{
   z-index: 1003;
    display: block;
@@ -108,19 +118,12 @@
    transform: scaleX(1) scaleY(1);
 }
 
-// .modal-content{
-//  padding:10px 24px;
-//  label{
-//    font-size:1rem;
-//  }
-//  app-chamber-user-form{
-//    margin-top:2rem;
-//  }
-// }
-.modal-header{
-  padding:0.8rem;
+.modal-content{
+ padding:10px 24px;
+ label{
+   font-size:1rem;
+ }
+ app-chamber-user-form{
+   margin-top:2rem;
+ }
 }
-// .close-icon{
-//   padding: 8px;
-//   cursor: pointer;
-// }
